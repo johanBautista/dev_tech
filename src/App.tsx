@@ -1,57 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { useEffect } from "react";
+import { fetchProducts } from "./features/products/productSlice";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "./app/store";
+import "./App.css";
+import ListCards from "./components/listProducts/ListProducts";
+import Dropdown from "./components/dropdown/Dropdown";
 
 function App() {
+  const dispatch = useDispatch<AppDispatch>();
+  const filterProducts = useSelector(
+    (state: RootState) => state.products.leakedProducts
+  );
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+    <>
+      <header>
+        <h1>Edatalia test</h1>
       </header>
-    </div>
+      <main className="container">
+        <h1>Lista de productos</h1>
+        <section className="selector">
+          <p>Filter:</p>
+          <Dropdown />
+        </section>
+        <section>
+          <ListCards products={filterProducts} />
+        </section>
+      </main>
+      <footer>
+        <p>© Tu Tienda en Línea 2023. Todos los derechos reservados.</p>
+      </footer>
+    </>
   );
 }
 

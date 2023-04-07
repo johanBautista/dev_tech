@@ -1,0 +1,23 @@
+select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #007bff;
+  background-color: #cbe6f85b;
+  color: #333;
+  border-radius: 0.25rem;
+  appearance: none;
+  outline: none;
+  margin-left: 1rem;
+}
+
+select:focus {
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+option {
+  padding: 0.5rem;
+  background-color: #f7f7f7;
+  color: #333;
+}
