@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { fetchProducts } from "./features/products/productSlice";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "./app/store";
 import "./App.css";
 import ListCards from "./components/listProducts/ListProducts";
@@ -20,7 +19,20 @@ function App() {
   return (
     <>
       <header>
-        <h1>Edatalia test</h1>
+        <div className="header">
+          <h1>Edatalia</h1>
+          <i>Prueba técnica</i>
+          <p>
+            Presentado por <br /> 
+            <a
+              href="https://www.linkedin.com/in/johanbautista/"
+              rel="noreferrer"
+              target="_blank"
+            >
+               Johan Bautista
+            </a>
+          </p>
+        </div>
       </header>
       <main className="container">
         <h1>Lista de productos</h1>

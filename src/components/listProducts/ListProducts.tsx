@@ -13,23 +13,19 @@ const ListCards = ({ products }: ProductList) => {
       {products.length === 0 ? (
         <Spinner />
       ) : (
-        products.map((product: any) => (
+        products.map((product: ApiProduct) => (
           <div key={product.id} className="card">
             <img
               src={product.image}
               alt={`this is a image of ${product.title}`}
             />
-            <div className="card-body">
-              <div className="ro">
-                <div className="card-title">
-                  <h5 className="title">{product.title}</h5>
-                  <div className="prices">
-                    <span className="">{product.price}€</span>
-                  </div>
-                </div>
+            <div className="card--body">
+              <div>
+                <h5 className="card--title">{product.title}</h5>
+                <span className="card--price">{product.price}€</span>
               </div>
               <hr />
-              <p className="description">{product.description}</p>
+              <p className="card--description">{product.description}</p>
               <div className="btn-group">
                 <div className="btn">
                   <a href="/">Buy Now</a>
